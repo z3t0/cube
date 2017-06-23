@@ -2,3 +2,9 @@
 
 A minecraft clone written in C using OpenGl bindings.
 
+** TODO [0/4]
+- [ ] Create window context
+- [ ] Create OpenGL context
+- [ ] Render lines and shapes
+  - [ ] Compiling and loading shaders from source file
+  - [ ] rendering colors
