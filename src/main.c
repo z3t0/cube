@@ -21,6 +21,8 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);  
 
+void processInput(GLFWwindow *window);
+
 int main() {
   printf("%s initialized\n", NAME);
 
@@ -30,6 +32,7 @@ int main() {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
 
   GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, NAME, NULL, NULL);
 
@@ -54,6 +57,9 @@ int main() {
 
   // Render loop
   while(!glfwWindowShouldClose(window)) {
+
+    processInput(window);
+
     glfwSwapBuffers(window);
     glfwPollEvents();    
   }
@@ -66,3 +72,8 @@ int main() {
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
 }  
+
+void processInput(GLFWwindow *window) {
+  if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    glfwSetWindowShouldClose(window, 1);
+}
